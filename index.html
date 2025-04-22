@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowX Digital Marketing</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS CSS (Animation on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- EmailJS for Contact Form -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <style>
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slideDown {
+            animation: slideDown 0.4s ease forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-indigo-600 via-purple-700 to-pink-600 text-white p-5 shadow-lg fixed top-0 w-full z-20 backdrop-blur-md bg-opacity-90">
+        <div class="flex justify-between items-center" data-aos="fade-down">
+            <!-- Brand Logo -->
+            <h1 class="text-2xl font-bold animate-pulse">GrowX</h1>
+        
+            <!-- Hamburger Menu Icon -->
+            <div class="lg:hidden">
+                <button id="hamburger" class="text-white focus:outline-none">
+                    <i class="fas fa-bars fa-lg animate-pulse"></i>
+                </button>
+            </div>
+        
+            <!-- Navigation Links -->
+            <nav id="menu"
+                class="absolute top-16 left-0 w-full bg-gradient-to-b from-gray-800 to-gray-900 lg:static lg:bg-transparent lg:flex space-y-4 lg:space-y-0 lg:space-x-6 text-center lg:text-left opacity-0 scale-95 hidden transition-all duration-300 ease-in-out origin-top shadow-xl rounded-b-2xl z-10">
+                <a href="#services" class="block py-3 hover:text-yellow-500" data-aos="fade-down" data-aos-delay="100">Services</a>
+                <a href="#about" class="block py-3 hover:text-yellow-500" data-aos="fade-down" data-aos-delay="200">About Us</a>
+                <a href="#contact" class="block py-3 hover:text-yellow-500" data-aos="fade-down" data-aos-delay="300">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="h-screen bg-gradient-to-r from-indigo-600 via-purple-700 to-pink-600 text-white flex flex-col md:flex-row justify-center items-center text-center md:text-left p-8 space-y-6 md:space-y-0 md:space-x-10 pt-24 relative" data-aos="fade-zoom-in" data-aos-duration="1200">
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        
+        <div class="flex-1 space-y-4 z-10">
+            <h2 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg animate-bounce" data-aos="fade-right" data-aos-delay="200">Boost Your Brand Online</h2>
+            <p class="text-lg md:text-xl max-w-xl text-white/90" data-aos="fade-right" data-aos-delay="400">Creative marketing solutions to elevate your business and drive more engagement.</p>
+            <button onclick="scrollToContact()" class="bg-orange-500 text-white px-8 py-4 rounded-2xl hover:bg-orange-600 transition-all duration-300 shadow-lg animate-pulse" data-aos="zoom-in" data-aos-delay="600">Get In Touch</button>
+        </div>
+        <div class="flex-1 space-y-4 z-10">
+            <img src="img/Homeimg.jpg" alt="Digital Marketing Strategy" class="rounded-2xl shadow-lg w-full md:w-auto" data-aos="zoom-in-up" data-aos-delay="800">
+            <p class="text-gray-200 text-lg md:text-xl max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="1000">Improve your search rankings and attract organic traffic with our effective SEO strategies tailored to your business.</p>
+        </div>
+    </section>
+
+   <!-- Services Section -->
+<section id="services" class="py-16 bg-gray-50" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div class="bg-white p-6 rounded-2xl shadow-lg" data-aos="zoom-in">
+                <h3 class="text-2xl font-semibold mb-3">SEO Optimization</h3>
+                <p class="text-gray-600">Enhance your website's visibility on search engines and drive organic traffic.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                <h3 class="text-2xl font-semibold mb-3">Social Media Marketing</h3>
+                <p class="text-gray-600">Grow your brand awareness and engage your audience across platforms like Facebook, Instagram, and LinkedIn.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                <h3 class="text-2xl font-semibold mb-3">Paid Ad Campaigns</h3>
+                <p class="text-gray-600">Run high-converting ad campaigns on Google, Facebook, and Instagram to drive traffic and sales fast.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-16 bg-gray-50" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">About Us</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto mb-8">
+            At <span class="font-semibold text-indigo-600">GrowX Digital</span>, we help businesses grow online through strategic digital marketing solutions. From social media management to targeted ad campaigns and website optimization, our mission is to maximize your online presence and boost your business reach.
+        </p>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="p-10 text-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white" data-aos="fade-up">
+    <h2 class="text-4xl font-bold mb-4">Contact Us</h2>
+    <p class="text-lg mb-4">We'd love to hear from you! Send us a message below.</p>
+
+    <form id="contactForm" class="max-w-lg mx-auto">
+        <input type="text" id="name" name="name" placeholder="Your Name" class="p-3 mb-4 w-full bg-white text-gray-800 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+        <input type="email" id="email" name="email" placeholder="Your Email" class="p-3 mb-4 w-full bg-white text-gray-800 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+        <textarea id="message" name="message" placeholder="Your Message" class="p-3 mb-4 w-full bg-white text-gray-800 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required></textarea>
+        <button type="submit" class="p-3 bg-yellow-500 text-white rounded-full w-full hover:bg-yellow-600 transition duration-300">Send Message</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white p-10 text-center flex flex-col items-center space-y-4">
+    <div class="text-lg font-semibold">Follow Us</div>
+    <div class="flex space-x-4">
+        <a href="#" class="text-white hover:text-yellow-500 transition duration-300">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="text-white hover:text-yellow-500 transition duration-300">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="text-white hover:text-yellow-500 transition duration-300">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" class="text-white hover:text-yellow-500 transition duration-300">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    <p class="text-sm">&copy; 2025 GrowX Digital Marketing. All rights reserved.</p>
+</footer>
+
+
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+            offset: 200,
+        });
+
+        const hamburger = document.getElementById("hamburger");
+        const menu = document.getElementById("menu");
+
+        hamburger.addEventListener("click", () => {
+            if (menu.classList.contains("hidden")) {
+                menu.classList.remove("hidden");
+                menu.classList.add("flex", "flex-col", "p-5", "animate-slideDown");
+                menu.classList.remove("opacity-0", "scale-95");
+                menu.classList.add("opacity-100", "scale-100");
+            } else {
+                menu.classList.remove("flex", "flex-col", "p-5", "animate-slideDown");
+                menu.classList.add("opacity-0", "scale-95");
+                setTimeout(() => {
+                    menu.classList.add("hidden");
+                }, 300);
+            }
+        });
+
+        function scrollToContact() {
+            const contactSection = document.getElementById("contact");
+            contactSection.scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+ 
+  
+  <!-- EmailJs JS <script  -->
+  <script>
+    emailjs.init("Nhyhvf08MTPH-yDBx");  // Replace 'your_user_id' with your EmailJS user ID
+  
+    const form = document.getElementById("contactForm");
+  
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+  
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+  
+      const params = {
+        name: name,
+        email: email,
+        message: message,
+      };
+  
+      emailjs.send("service_faztaf9", "template_kvs7gzx", params)
+        .then((response) => {
+          console.log("Success:", response);
+          alert("Message Sent Successfully!");
+          form.reset();
+        })
+        .catch((error) => {
+          console.log("Error:", error);
+          alert("Oops! Something went wrong.");
+        });
+    });
+  </script>
+
+</body>
+</html>
