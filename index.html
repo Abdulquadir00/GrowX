@@ -1,580 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Designing Dreams Studio offers elegant interior and exterior design solutions, including modular kitchens, wardrobes, and more." />
-  <meta name="keywords" content="interior design, exterior design, modular kitchens, home decor, Patna" />
-  <meta name="geo.placename" content="Patna, Bihar, India" />
-  <meta property="og:title" content="Designing Dreams Studio" />
-  <meta property="og:description" content="Transform your space with our creative and elegant design solutions." />
-  <meta property="og:image" content="img/og-image.jpg" />
-  <meta property="og:url" content="https://www.designingdreams.com" />
-  <title>Designing Dreams Studio</title>
-  <link rel="icon" type="image/png" href="img/logo.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-    .parallax-bg { background-attachment: fixed; background-size: cover; background-position: center; width: 100%; height: 100%; }
-    .animate-pulse { animation: pulse 2s infinite; }
-    .portfolio-img { transition: transform 0.3s ease, opacity 0.3s ease; position: relative; }
-    .portfolio-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(249, 115, 22, 0.3), rgba(234, 179, 8, 0.3)); opacity: 0; transition: opacity 0.3s ease; }
-    .portfolio-img:hover::after { opacity: 0.7; }
-    .portfolio-img:hover { transform: scale(1.05); opacity: 0.9; }
-    .form-input { transition: all 0.3s ease; }
-    .form-input:focus { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
-    .contact-link { transition: color 0.3s ease, transform 0.3s ease; }
-    .contact-link:hover { color: #f97316; transform: translateY(-2px); }
-    .text-glow { animation: glow 2s ease-in-out infinite alternate; }
-    .offer-card { transition: all 0.3s ease; }
-    .offer-card:hover { background: linear-gradient(to bottom, #fff7ed, #fef3c7); transform: translateY(-5px); }
-    @keyframes glow { from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); } to { text-shadow: 0 0 15px rgba(255, 255, 255, 1); } }
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 100; }
-    .modal-content { background: linear-gradient(to bottom, #fff, #fff7ed); max-width: 500px; width: 90%; margin: 10% auto; padding: 2rem; border-radius: 1rem; position: relative; animation: fadeIn 0.4s ease; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); border: 2px solid transparent; background-clip: padding-box; background: linear-gradient(to bottom, #fff, #fff7ed) padding-box, linear-gradient(to right, #f97316, #eab308) border-box; }
-    .modal-content h2 { color: #1f2937; }
-    .close-btn { position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; cursor: pointer; color: #1f2937; transition: color 0.3s ease; }
-    .close-btn:hover { color: #f97316; }
-    @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #f97316; color: #fff; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease; z-index: 50; }
-    .back-to-top.visible { opacity: 1; }
-    .back-to-top:hover { transform: scale(1.1); background: #ea580c; }
-    .nav-button { position: relative; }
-    .nav-button::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(to right, #f97316, #eab308); transition: width 0.3s ease; }
-    .nav-button:hover::after { width: 100%; }
-    .nav-button:hover { transform: scale(1.15); transition-duration: 400ms; }
-    .hamburger { display: none; cursor: pointer; }
-    .hamburger div { width: 25px; height: 3px; background: #fff; margin: 5px 0; transition: all 0.3s ease; }
-    .nav-menu { display: flex; align-items: center; gap: 1rem; }
-    .bg-gradient-to-r { background-image: linear-gradient(to right, #fff, #f3f4f6); }
-    .hero-overlay { min-height: 100%; top: 0; bottom: 0; }
-    @media (max-width: 640px) {
-      .parallax-bg { background-attachment: scroll; }
-      .hamburger { display: block; }
-      .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #1f2937; padding: 1rem; }
-      .nav-menu.active { display: flex; }
-      .nav-menu a { padding: 0.75rem 1rem; font-size: 1.1rem; }
-      .hamburger.active div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-      .hamburger.active div:nth-child(2) { opacity: 0; }
-      .hamburger.active div:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
-      .modal-content { max-height: 80vh; overflow-y: auto; }
-      header#home { flex-direction: column; align-items: center; text-align: center; min-height: calc(100vh + 100px); width: 100%; height: 100%; }
-      header#home .quote-form-container { min-width: 300px; max-width: calc(100% - 16px); min-height: fit-content; }
-    }
-  </style>
-  <style>
-    .slideshow {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowX Digital Marketing</title>
 
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  animation: zoom 20s ease-in-out infinite;
-  transition: opacity 1s ease-in-out;
-  transform: scale(1);
-}
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-.slide.active {
-  opacity: 1;
-  z-index: 1;
-}
+    <!-- AOS CSS (Animation on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-/* Zoom keyframe animation */
-@keyframes zoom {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-  </style>
-</head>
-<body class="text-gray-800 bg-gray-100">
-  <nav class="fixed top-0 w-full bg-gradient-to-r from-gray-900 to-black text-white px-6 py-4 flex justify-between items-center z-50 shadow-2xl transition-all duration-500">
-    <div class="flex items-center gap-3">
-      <img src="img/logo.png" alt="Designing Dreams Studio Logo" class="h-12 w-auto max-w-[150px] object-contain" />
-      <span class="font-bold text-2xl tracking-wide">Designing Dreams Studio</span>
-    </div>
-    <div class="hamburger" onclick="toggleMenu()" aria-expanded="false">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="nav-menu">
-      <div class="text-center" data-aos="fade-up" data-aos-delay="500">
-        <button onclick="openModal()" class="nav-button bg-gradient-to-r from-orange-500 to-yellow-500 text-gray-900 px-6 py-2 rounded-full shadow-lg hover:scale-110 transform transition duration-300 animate-pulse">Get a Free Consultation</button>
-      </div>
-    </div>
-  </nav>
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-  <div id="contactModal" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-content max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
-      
-      <!-- Header -->
-      <header class="flex justify-between items-center mb-4">
-        <span class="text-lg font-semibold text-gray-800">Get a Free Consultation</span>
-        <button class="close-btn" onclick="closeModal()" aria-label="Close modal">
-          <i class="fas fa-times text-2xl text-gray-800 hover:text-orange-600 transition-colors"></i>
-        </button>
-      </header>
-  
-      <!-- Form -->
-      <form id="contactForm" class="flex flex-col gap-4" novalidate>
-  
-        <!-- Name -->
-        <div class="relative">
-          <label for="contactName" class="sr-only">Name</label>
-          <input type="text" id="contactName" placeholder="Your Name" required
-            class="form-input w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500 bg-gray-50" />
-          <p class="mt-1 text-sm text-red-500 hidden" id="contactNameError">Please enter your name</p>
-        </div>
-  
-        <!-- Phone -->
-        <div class="relative">
-          <label for="contactPhone" class="sr-only">Phone Number</label>
-          <input type="tel" id="contactPhone" placeholder="Your Phone Number" required
-            class="form-input w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500 bg-gray-50" />
-          <p class="mt-1 text-sm text-red-500 hidden" id="contactPhoneError">Please enter a valid phone number</p>
-        </div>
-  
-        <!-- Email -->
-        <div class="relative">
-          <label for="contactEmail" class="sr-only">Email</label>
-          <input type="email" id="contactEmail" placeholder="Your Email Address" required
-            class="form-input w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500 bg-gray-50" />
-          <p class="mt-1 text-sm text-red-500 hidden" id="contactEmailError">Please enter a valid email address</p>
-        </div>
-  
-        <!-- Mobile -->
-        <div class="relative">
-          <label for="contactMobile" class="sr-only">Mobile Number</label>
-          <input type="tel" id="contactMobile" placeholder="Your Mobile Number" required
-            class="form-input w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500 bg-gray-50" />
-          <p class="mt-1 text-sm text-red-500 hidden" id="contactMobileError">Please enter your mobile number</p>
-        </div>
-  
-        <!-- Submit Button -->
-        <button type="submit" id="submitBtn"
-          class="bg-gradient-to-r from-orange-500 to-yellow-500 text-gray-900 px-4 py-3 rounded-lg hover:bg-orange-600 transition transform hover:scale-105 disabled:opacity-50">
-          Send Message
-        </button>
-      </form>
-  
-      <!-- Response Message -->
-      <p id="form-response" class="text-center mt-4 text-green-600 font-medium hidden">
-        Thank you! We will get back to you soon.
-      </p>
-    </div>
-  </div>
-  
-  
+    <!-- EmailJS for Contact Form -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-  <header id="home" class="relative w-full h-screen flex justify-center items-center text-white bg-cover bg-center px-4 sm:px-6" data-aos="fade-in">
-    <div class="slideshow">
-      <div class="slide active" style="background-image: url('img/home.jpeg');"></div>
-      <div class="slide" style="background-image: url('img/home2.jpg');"></div>
-      <div class="slide" style="background-image: url('img/home3.jpg');"></div>
-    </div>
-    <div class="bg-black bg-opacity-60 w-full h-full absolute top-0 left-0 z-0 hero-overlay"></div>
-    <div class="relative z-10 text-center" data-aos="fade-up" data-aos-delay="100">
-      <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight text-glow">Transform Your Space</h1>
-      <p class="text-lg sm:text-xl md:text-2xl my-4">Crafting Elegant Interior & Exterior Designs</p>
-      <button onclick="openModal()" class="nav-button bg-gradient-to-r from-orange-500 to-yellow-500 text-gray-900 px-6 py-2 rounded-full shadow-lg hover:scale-110 transform transition duration-300 animate-pulse">Get a Free Consultation</button>
-    </div>
-    
-  </header>
-
-  <section id="what-we-offer" class="py-20 bg-gradient-to-r from-white to-gray-100">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-between items-center mb-12">
-        <h2 class="text-4xl font-bold text-gray-900">What We Offer</h2>
-        <button onclick="openModal()" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition transform hover:scale-105">Get Free Quote</button>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-white rounded-xl shadow-lg p-6 offer-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="flex items-center mb-4">
-            <i class="fas fa-paint-brush text-orange-600 text-2xl mr-2 offer-icon" aria-hidden="true"></i>
-            <h3 class="text-2xl font-semibold text-orange-600">Our Services</h3>
-          </div>
-          <ul class="list-disc list-inside text-gray-600 mb-4">
-            <li>Modular kitchens</li>
-            <li>Modular wardrobes</li>
-            <li>Lighting</li>
-            <li>Flooring</li>
-            <li>Electrical work</li>
-            <li>Civil work</li>
-            <li>False ceiling</li>
-            <li>Wall design & painting</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg p-6 offer-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="flex items-center mb-4">
-            <i class="fas fa-shield-alt text-orange-600 text-2xl mr-2 offer-icon" aria-hidden="true"></i>
-            <h3 class="text-2xl font-semibold text-orange-600">Warranty</h3>
-          </div>
-          <ul class="list-disc list-inside text-gray-600 mb-4">
-            <li><strong>Up to 10 Years Warranty</strong> - on furniture and fittings.</li>
-            <li><strong>Material Assurance</strong> - Only certified, high-quality materials used.</li>
-            <li><strong>Workmanship Guarantee</strong> - Flawless finish and expert craftsmanship backed by warranty.</li>
-            <li><strong>After-Sales Support</strong> - Dedicated service team for maintenance and support.</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg p-6 offer-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="flex items-center mb-4">
-            <i class="fas fa-lightbulb text-orange-600 text-2xl mr-2 offer-icon" aria-hidden="true"></i>
-            <h3 class="text-2xl font-semibold text-orange-600">Technology & Science</h3>
-          </div>
-          <div class="space-y-4 mb-4">
-            <div class="flex items-start">
-              <i class="fas fa-arrow-right text-orange-600 mt-1 mr-2" aria-hidden="true"></i>
-              <p class="text-gray-600"><strong>3D Design Tools</strong> - Visualize your space with precision before execution.</p>
-            </div>
-            <div class="flex items-start">
-              <i class="fas fa-arrow-right text-orange-600 mt-1 mr-2" aria-hidden="true"></i>
-              <p class="text-gray-600"><strong>Smart Home Integration</strong> - Automate lighting, climate, and security systems.</p>
-            </div>
-            <div class="flex items-start">
-              <i class="fas fa-arrow-right text-orange-600 mt-1 mr-2" aria-hidden="true"></i>
-              <p class="text-gray-600"><strong>Eco-Friendly Materials</strong> - Sustainable and safe materials for healthy living.</p>
-            </div>
-            <div class="flex items-start">
-              <i class="fas fa-arrow-right text-orange-600 mt-1 mr-2" aria-hidden="true"></i>
-              <p class="text-gray-600"><strong>Space Optimization</strong> - Intelligent layouts to make the most of your space.</p>
-            </div>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg p-6 offer-card" data-aos="fade-up" data-aos-delay="400">
-          <div class="flex items-center mb-4">
-            <i class="fas fa-shield-alt text-orange-600 text-2xl mr-2 offer-icon" aria-hidden="true"></i>
-            <h3 class="text-2xl font-semibold text-orange-600">Benefits</h3>
-          </div>
-          <ul class="list-disc list-inside text-gray-600 mb-4">
-            <li><strong>End-to-End Service</strong> - We manage everything from concept to completion.</li>
-            <li><strong>Time-Saving</strong> - Quick project execution with minimal hassle.</li>
-            <li><strong>Boosted Property Value</strong> - Professionally designed spaces enhance resale potential.</li>
-            <li><strong>Tailored Designs</strong> - Interiors that reflect your personality and needs.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="portfolio" class="py-20 bg-gray-50">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-4xl font-bold text-gray-900">Portfolio</h2>
-      <button onclick="openModal()" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition transform hover:scale-105">Get Free Quote</button>
-
-      <p class="text-gray-600 mt-2">Explore Our Recent Work</p>
-    </div>
-    <div class="max-w-6xl mx-auto px-4 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <a href="img/Modern Living Room.jpg" class="portfolio-img rounded-xl shadow-lg overflow-hidden relative" data-lightbox="portfolio" data-title="Modern Living Room Design" data-aos="zoom-in" data-aos-delay="100">
-        <img src="img/Modern Living Room.jpg" alt="Modern Living Room Design" class="w-full h-full object-cover" loading="lazy" />
-        <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white p-2 text-center">Modern Living Room</div>
-      </a>
-      <a href="img/Contemporary Exterior.jpg" class="portfolio-img rounded-xl shadow-lg overflow-hidden relative" data-lightbox="portfolio" data-title="Contemporary Exterior" data-aos="zoom-in" data-aos-delay="200">
-        <img src="img/Contemporary Exterior.jpg" alt="Contemporary Exterior" class="w-full h-full object-cover" loading="lazy" />
-        <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white p-2 text-center">Contemporary Exterior</div>
-      </a>
-      <a href="img/Cozy Living Room.jpg" class="portfolio-img rounded-xl shadow-lg overflow-hidden relative" data-lightbox="portfolio" data-title="Cozy Living Room" data-aos="zoom-in" data-aos-delay="300">
-        <img src="img/Cozy Living Room.jpg" alt="Cozy Living Room" class="w-full h-full object-cover" loading="lazy" />
-        <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white p-2 text-center">Cozy Living Room</div>
-      </a>
-      <a href="img/Elegant Garden.jpeg" class="portfolio-img rounded-xl shadow-lg overflow-hidden relative" data-lightbox="portfolio" data-title="Elegant Garden Design" data-aos="zoom-in" data-aos-delay="400">
-        <img src="img/Elegant Garden.jpeg" alt="Elegant Garden Design" class="w-full h-full object-cover" loading="lazy" />
-        <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white p-2 text-center">Elegant Garden</div>
-      </a>
-    </div>
-  </section>
-
-  <section id="connect" class="py-20 bg-gradient-to-r from-orange-50 to-yellow-100">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-4xl font-bold text-gray-900">Connect With Us</h2>
-      <button onclick="openModal()" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition transform hover:scale-105">Get Free Quote</button>
-
-      <p class="text-gray-700 mt-2">Reach out to start your design journey</p>
-    </div>
-    <div class="max-w-4xl mx-auto px-4" data-aos="fade-up" data-aos-delay="100">
-      <div class="bg-white p-8 rounded-2xl shadow-xl text-center text-gray-700">
-        <p class="text-lg font-semibold mb-4">
-          Phone: <a href="tel:+919006768029" class="contact-link text-orange-600 hover:underline inline-block">+91 9006768029</a>
-        </p>
-        <p class="text-lg font-semibold mb-4">
-          Email: <a href="mailto:abdul1511999@gmail.com" class="contact-link text-orange-600 hover:underline inline-block">abdul1511999@gmail.com</a>
-        </p>
-        <p class="text-lg font-semibold mb-4">
-          WhatsApp: <a href="https://wa.me/919006768029" class="contact-link text-orange-600 hover:underline inline-block">+91 9006768029</a>
-        </p>
-        <p class="text-lg font-semibold mb-6">Address: Yadav Market, Pirmohani Rd, near Uma Cinema, Maulana Azad Nagar, Ghrounda, Patna, Bihar 800001</p>
-      </div>
-      <div class="mt-6 shadow-xl rounded-2xl overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.908673059345!2d85.147132815036!3d25.609065425846783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDM2JzMyLjYiTiA4NcKwMDgnNDkuNyJF!5e0!3m2!1sen!2sin!4v1737702345678!5m2!1sen!2sin" width="100%" height="400" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <footer class="bg-gradient-to-r from-gray-900 to-black text-white py-12">
-    <div class="max-w-6xl mx-auto px-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Business Info Section -->
-      <div class="text-center sm:text-left">
-        <h3 class="text-xl font-bold mb-4">Designing Dreams Studio</h3>
-        <p class="text-gray-300">Transforming spaces with elegance and creativity.</p>
-      </div>
-  
-      <!-- Contact Info Section -->
-      <div class="text-center sm:text-left">
-        <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
-        <p class="text-gray-300">Phone: <a href="tel:+919006768029" class="text-orange-400 hover:underline">+91 9006768029</a></p>
-        <p class="text-gray-300">Email: <a href="mailto:abdul1511999@gmail.com" class="text-orange-400 hover:underline">abdul1511999@gmail.com</a></p>
-        <p class="text-gray-300">WhatsApp: <a href="https://wa.me/919006768029" rel="noopener noreferrer" class="text-orange-400 hover:underline">+91 9006768029</a></p>
-      </div>
-  
-      <!-- Social Media Links Section -->
-      <div class="text-center lg:text-right">
-        <h3 class="text-xl font-bold mb-4">Follow Us</h3>
-        <!-- Instagram Link -->
-        <a href="https://www.instagram.com/abdul___quadir___/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" class="text-pink-500 hover:text-pink-600 text-2xl mx-2">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <!-- WhatsApp Link -->
-        <a href="https://wa.me/919006768029" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" class="text-green-500 hover:text-green-600 text-2xl mx-2">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <!-- Facebook Link (Placeholder: Update with valid URL) -->
-        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" class="text-blue-600 hover:text-blue-700 text-2xl mx-2">
-          <i class="fab fa-facebook"></i>
-        </a>
-      </div>
-    </div>
-  
-    <!-- Address Section -->
-    <div class="text-center mt-8">
-      <h3 class="text-xl font-bold mb-4">Visit Us</h3>
-      <p class="text-gray-300">Yadav Market, Pirmohani Rd, near Uma Cinema, Maulana Azad Nagar, Ghrounda, Patna, Bihar 800001</p>
-    </div>
-  
-    <!-- Copyright Section -->
-    <p class="text-center mt-8 text-gray-400">© <span id="year"></span> Designing Dreams Studio. All rights reserved.</p>
-  </footer>
-  
-  <!-- JavaScript to dynamically set the year -->
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-  
-
-  <div id="backToTop" class="back-to-top" onclick="scrollToTop()">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-    </svg>
-  </div>
-
-  <!-- Add jQuery first -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Correct lightbox.js path -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    // Initialize lightbox with options
-    lightbox.option({
-      'resizeDuration': 200,
-      'wrapAround': true,
-      'disableScrolling': true,
-      'fitImagesInViewport': true,
-      'albumLabel': 'Image %1 of %2'
-    });
-
-    // Slideshow functionality
-    const slides = document.querySelectorAll(".slide");
-    let currentSlide = 0;
-
-    setInterval(() => {
-      slides[currentSlide].classList.remove("active");
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add("active");
-    }, 5000);
-
-
-    // Initialize AOS
-    AOS.init({ duration: 1000, once: true });
-
-    // Dynamic Copyright Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Hamburger Menu Toggle
-    function toggleMenu() {
-      const menu = document.querySelector('.nav-menu');
-      const hamburger = document.querySelector('.hamburger');
-      menu.classList.toggle('active');
-      hamburger.classList.toggle('active');
-      hamburger.setAttribute('aria-expanded', menu.classList.contains('active'));
-    }
-
-    // Smooth Scrolling for Navigation Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-        if (document.querySelector('.nav-menu').classList.contains('active')) {
-          toggleMenu();
+    <style>
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-      });
-    });
 
-    // Modal Functions
-    function openModal() {
-      document.getElementById('contactModal').style.display = 'block';
-      document.getElementById('contactName').focus();
-    }
+        .animate-slideDown {
+            animation: slideDown 0.4s ease forwards;
+        }
+    </style>
+</head>
 
-    function closeModal() {
-      document.getElementById('contactModal').style.display = 'none';
-      document.getElementById('contactForm').reset();
-      document.getElementById('form-response').classList.add('hidden');
-    }
+<body class="bg-gray-900 text-white">
 
-    // Close modal when clicking outside
-    window.addEventListener('click', function (event) {
-      const modal = document.getElementById('contactModal');
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-indigo-600 via-purple-700 to-pink-600 text-white p-5 shadow-lg fixed top-0 w-full z-20 backdrop-blur-md bg-opacity-90">
+        <div class="flex justify-between items-center" data-aos="fade-down">
+            <!-- Brand Logo -->
+            <h1 class="text-2xl font-bold animate-pulse">GrowX</h1>
+        
+            <!-- Hamburger Menu Icon -->
+            <div class="lg:hidden">
+                <button id="hamburger" class="text-white focus:outline-none">
+                    <i class="fas fa-bars fa-lg animate-pulse"></i>
+                </button>
+            </div>
+        
+            <!-- Navigation Links -->
+            <nav id="menu"
+                class="absolute top-16 left-0 w-full bg-gradient-to-b from-gray-800 to-gray-900 lg:static lg:bg-transparent lg:flex space-y-4 lg:space-y-0 lg:space-x-6 text-center lg:text-left opacity-0 scale-95 hidden transition-all duration-300 ease-in-out origin-top shadow-xl rounded-b-2xl z-10">
+                <a href="#services" class="block py-3 hover:text-yellow-500" data-aos="fade-down" data-aos-delay="100">Services</a>
+                <a href="#about" class="block py-3 hover:text-yellow-500" data-aos="fade-down" data-aos-delay="200">About Us</a>
+                <a href="#contact" class="block py-3 hover:text-yellow-500" data-aos="fade-down" data-aos-delay="300">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-    // Close modal on Escape key
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        closeModal();
-      }
-    });
+    <!-- Home Section -->
+    <section id="home" class="h-screen bg-gradient-to-r from-indigo-600 via-purple-700 to-pink-600 text-white flex flex-col md:flex-row justify-center items-center text-center md:text-left p-8 space-y-6 md:space-y-0 md:space-x-10 pt-24 relative" data-aos="fade-zoom-in" data-aos-duration="1200">
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        
+        <div class="flex-1 space-y-4 z-10">
+            <h2 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg animate-bounce" data-aos="fade-right" data-aos-delay="200">Boost Your Brand Online</h2>
+            <p class="text-lg md:text-xl max-w-xl text-white/90" data-aos="fade-right" data-aos-delay="400">Creative marketing solutions to elevate your business and drive more engagement.</p>
+            <button onclick="scrollToContact()" class="bg-orange-500 text-white px-8 py-4 rounded-2xl hover:bg-orange-600 transition-all duration-300 shadow-lg animate-pulse" data-aos="zoom-in" data-aos-delay="600">Get In Touch</button>
+        </div>
+        <div class="flex-1 space-y-4 z-10">
+            <img src="img/Home" alt="Digital Marketing Strategy" class="rounded-2xl shadow-lg w-full md:w-auto" data-aos="zoom-in-up" data-aos-delay="800">
+            <p class="text-gray-200 text-lg md:text-xl max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="1000">Improve your search rankings and attract organic traffic with our effective SEO strategies tailored to your business.</p>
+        </div>
+    </section>
 
-    // Back to Top Button
-    const backToTopButton = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopButton.classList.add('visible');
-      } else {
-        backToTopButton.classList.remove('visible');
-      }
-    });
+   <!-- Services Section -->
+<section id="services" class="py-16 bg-gray-50" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div class="bg-white p-6 rounded-2xl shadow-lg" data-aos="zoom-in">
+                <h3 class="text-2xl font-semibold mb-3">SEO Optimization</h3>
+                <p class="text-gray-600">Enhance your website's visibility on search engines and drive organic traffic.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                <h3 class="text-2xl font-semibold mb-3">Social Media Marketing</h3>
+                <p class="text-gray-600">Grow your brand awareness and engage your audience across platforms like Facebook, Instagram, and LinkedIn.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                <h3 class="text-2xl font-semibold mb-3">Paid Ad Campaigns</h3>
+                <p class="text-gray-600">Run high-converting ad campaigns on Google, Facebook, and Instagram to drive traffic and sales fast.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+<!-- About Section -->
+<section id="about" class="py-16 bg-gray-50" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">About Us</h2>
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto mb-8">
+            At <span class="font-semibold text-indigo-600">GrowX Digital</span>, we help businesses grow online through strategic digital marketing solutions. From social media management to targeted ad campaigns and website optimization, our mission is to maximize your online presence and boost your business reach.
+        </p>
+    </div>
+</section>
 
-    // Form Validation Helpers
-    function showError(input, errorElement) {
-      errorElement.classList.remove('invisible');
-      input.classList.add('border-red-500');
-    }
+<!-- Contact Section -->
+<section id="contact" class="p-10 text-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white" data-aos="fade-up">
+    <h2 class="text-4xl font-bold mb-4">Contact Us</h2>
+    <p class="text-lg mb-4">We'd love to hear from you! Send us a message below.</p>
 
-    function hideError(input, errorElement) {
-      errorElement.classList.add('invisible');
-      input.classList.remove('border-red-500');
-    }
+    <form id="contactForm" class="max-w-lg mx-auto">
+        <input type="text" id="name" name="name" placeholder="Your Name" class="p-3 mb-4 w-full bg-white text-gray-800 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+        <input type="email" id="email" name="email" placeholder="Your Email" class="p-3 mb-4 w-full bg-white text-gray-800 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required>
+        <textarea id="message" name="message" placeholder="Your Message" class="p-3 mb-4 w-full bg-white text-gray-800 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" required></textarea>
+        <button type="submit" class="p-3 bg-yellow-500 text-white rounded-full w-full hover:bg-yellow-600 transition duration-300">Send Message</button>
+    </form>
+</section>
 
-    
-     // Initialize EmailJS
-     emailjs.init("Nhyhvf08MTPH-yDBx"); // Your EmailJS User ID
+<!-- Footer -->
+<footer class="bg-gray-900 text-white p-10 text-center flex flex-col items-center space-y-4">
+    <div class="text-lg font-semibold">Follow Us</div>
+    <div class="flex space-x-4">
+        <a href="#" class="text-white hover:text-yellow-500 transition duration-300">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="text-white hover:text-yellow-500 transition duration-300">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="text-white hover:text-yellow-500 transition duration-300">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" class="text-white hover:text-yellow-500 transition duration-300">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    <p class="text-sm">&copy; 2025 GrowX Digital Marketing. All rights reserved.</p>
+</footer>
 
-const form = document.getElementById("contactForm");
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
 
-  // Get values
-  const name = document.getElementById("contactName").value.trim();
-  const phone = document.getElementById("contactPhone").value.trim();
-  const email = document.getElementById("contactEmail").value.trim();
-  const mobile = document.getElementById("contactMobile").value.trim();
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+            offset: 200,
+        });
 
-  // Error elements
-  const nameError = document.getElementById("contactNameError");
-  const phoneError = document.getElementById("contactPhoneError");
-  const emailError = document.getElementById("contactEmailError");
-  const mobileError = document.getElementById("contactMobileError");
+        // Toggle hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('menu');
 
-  // Reset errors
-  nameError.classList.add("hidden");
-  phoneError.classList.add("hidden");
-  emailError.classList.add("hidden");
-  mobileError.classList.add("hidden");
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('opacity-0');
+            menu.classList.toggle('scale-95');
+        });
 
-  // Validation
-  let valid = true;
+        // Close menu when a nav link is clicked
+        const navLinks = document.querySelectorAll('#menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                menu.classList.add('opacity-0');
+                menu.classList.add('scale-95');
+            });
+        });
 
-  if (name === "") {
-    nameError.classList.remove("hidden");
-    valid = false;
-  }
-
-  if (!/^\d{10}$/.test(phone)) {
-    phoneError.classList.remove("hidden");
-    valid = false;
-  }
-
-  if (!/^\S+@\S+\.\S+$/.test(email)) {
-    emailError.classList.remove("hidden");
-    valid = false;
-  }
-
-  if (!/^\d{10,15}$/.test(mobile)) {
-    mobileError.classList.remove("hidden");
-    valid = false;
-  }
-
-  if (!valid) return;
-
-  // Generate current time
-  const currentTime = new Date().toLocaleString();
-
-  // Prepare EmailJS parameters
-  const params = {
-    name: name,
-    phone: phone,
-    email: email,
-    mobile: mobile,
-    message: `Inquiry via contact form`, // Optional message
-    time: currentTime,
-  };
-
-  emailjs.send("service_faztaf9", "template_kvs7gzx", params)
-    .then((response) => {
-      console.log("Email sent successfully", response);
-      document.getElementById("form-response").classList.remove("hidden");
-      form.reset();
-    })
-    .catch((error) => {
-      console.error("Email sending failed", error);
-      alert("Oops! Something went wrong. Please try again.");
-    });
-});
-
-    // Image error handling
-    document.querySelectorAll('.portfolio-img img').forEach(img => {
-      img.onerror = function() {
-        this.src = 'img/placeholder.jpg'; // Fallback image
+        function scrollToContact() {
+            const contactSection = document.getElementById("contact");
+            contactSection.scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+ 
+  
+  <!-- EmailJs JS <script  -->
+  <script>
+    emailjs.init("Nhyhvf08MTPH-yDBx");  // Replace 'your_user_id' with your EmailJS user ID
+  
+    const form = document.getElementById("contactForm");
+  
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+  
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+  
+      const params = {
+        name: name,
+        email: email,
+        message: message,
       };
+  
+      emailjs.send("service_faztaf9", "template_kvs7gzx", params)
+        .then((response) => {
+          console.log("Success:", response);
+          alert("Message Sent Successfully!");
+          form.reset();
+        })
+        .catch((error) => {
+          console.log("Error:", error);
+          alert("Oops! Something went wrong.");
+        });
     });
-
   </script>
+
 </body>
 </html>
